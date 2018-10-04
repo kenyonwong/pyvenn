@@ -120,8 +120,7 @@ def get_labels(data, fill=["number"]):
             labels[k] += "(%.1f%%)" % (100.0 * len(set_collections[k]) / data_size)
     if "list" in fill:
         labels[]
-        for k in set_collections:
-            labels[k] += set_collections[k]
+
     
     return labels
 
