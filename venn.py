@@ -121,9 +121,8 @@ def get_labels(data, fill=["number"]):
     if "list" in fill:
         for k in set_collections:
             indicator_collection[k] += set_collections[k]
-        return indicator_collection
     
-    return labels
+    return indicator_collection,labels
 
 def venn2(labels, names=['A', 'B'], **options):
     """
