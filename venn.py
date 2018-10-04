@@ -110,7 +110,7 @@ def get_labels(data, fill=["number"]):
     labels = []
     if "logic" in fill:
         for k in set_collections:
-            labels[k] = k + ": "
+            labels[k] = []
     if "number" in fill:
         for k in set_collections:
             labels[k] += str(len(set_collections[k]))
