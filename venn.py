@@ -465,3 +465,23 @@ def venn6(labels, names=['A', 'B', 'C', 'D', 'E'], **options):
     
     return fig, ax
 
+def set_combine(data):
+    N = len(data)
+
+    sets_data = [set(data[i]) for i in range(N)]  # sets for separate groups
+    s_all = set(chain(*data))                             # union of all sets
+
+    # bin(3) --> '0b11', so bin(3).split('0b')[-1] will remove "0b"
+    set_collections = {}
+    for n in range(1, 2**N):
+        key = bin(n).split('0b')[-1].zfill(N)
+        value = s_all
+        sets_for_intersection = [sets_data[i] for i in range(N) if  key[i] == '1']
+        sets_for_difference = [sets_data[i] for i in range(N) if  key[i] == '0']
+        for s in sets_for_intersection:
+            value = value & s
+        for s in sets_for_difference:
+            value = value - s
+        set_collections[key] = value
+    return set_collections
+
