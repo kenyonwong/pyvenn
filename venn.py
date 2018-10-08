@@ -107,6 +107,7 @@ def get_labels(data, fill=["number"]):
             value = value - s
         set_collections[key] = value
 
+    labels = {k: "" for k in set_collections}
     if "logic" in fill:
         for k in set_collections:
             labels[k] = []
